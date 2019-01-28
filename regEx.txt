@@ -19,22 +19,30 @@ Quantifiers:
 Quantifiers:
 (\+7|8)[0-9]{10} - номер телефона
 
-https://regexone.com/lesson/introduction_abcs
-Exercise 1: Matching Characters
+https://regexone.com/lesson/introduction_abcs - Exercise 1: Matching Characters
 abcdefg
 abcde
 abc
 
 abc[d-g]{0,} - solution for Exercise 1: Matching Characters
 
-https://regexone.com/lesson/wildcards_dot?
-Exercise 2: Matching With Wildcards
+https://regexone.com/lesson/wildcards_dot? - Exercise 2: Matching With Wildcards
 cat.	
 896.
 ?=+.
 Skip	abc1
 
 .{0,3}\. - Exercise 2: Matching With Wildcards
+
+https://regexone.com/lesson/matching_characters - Exercise 3: Matching Characters
+Match	can
+Match	man
+Match	fan
+Skip	dan
+Skip	ran
+Skip	pan
+
+[cmf]an - solution for Exercise 3: Matching Characters
 
 Приоритет:
 группировка ()
