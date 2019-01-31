@@ -93,6 +93,16 @@ var g = 123;
 
 \D{0,}123\D{0,} - solution for Exercise 1½: Matching Digits
 
+Exercise 5: Matching Character Ranges
+Match	Ana
+Match	Bob
+Match	Cpc
+Skip	aax
+Skip	bby
+Skip	ccz
+
+[A-C][a-z]{1,2} - solution for Exercise 5: Matching Character Ranges
+
 Экранирование \
 Для [ ] / \ ^ $ . | ? * + ( ) { }
 
