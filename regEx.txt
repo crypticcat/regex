@@ -34,6 +34,13 @@ Skip	abc1
 
 .{0,3}\. - Exercise 2: Matching With Wildcards
 
+https://regexone.com/lesson/repeating_characters - Exercise 6: Matching Repeated Characters
+Match	wazzzzzup
+Match	wazzzup
+Skip	wazup
+
+waz{3,}up - solution for Exercise 6: Matching Repeated Characters
+
 Приоритет:
 группировка ()
 кватификаторы *+?
