@@ -41,6 +41,14 @@ Skip	wazup
 
 waz{3,}up - solution for Exercise 6: Matching Repeated Characters
 
+https://regexone.com/lesson/kleene_operators - Exercise 7: Matching Repeated Characters
+Match	aaaabcc
+Match	aabbbbc
+Match	aacc
+Skip	a
+
+a+b*c+ - solution for Exercise 7: Matching Repeated Characters
+
 Приоритет:
 группировка ()
 кватификаторы *+?
