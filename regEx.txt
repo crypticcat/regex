@@ -49,6 +49,14 @@ Skip	a
 
 a+b*c+ - solution for Exercise 7: Matching Repeated Characters
 
+https://regexone.com/lesson/optional_characters - Exercise 8: Matching Optional Characters
+Match	1 file found?
+Match	2 files found?
+Match	24 files found?
+Skip	No files found.
+
+.*files* found\? - solution for Exercise 8: Matching Optional Characters
+
 Приоритет:
 группировка ()
 кватификаторы *+?
