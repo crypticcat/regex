@@ -57,6 +57,15 @@ Skip	No files found.
 
 .*files* found\? - solution for Exercise 8: Matching Optional Characters
 
+https://regexone.com/lesson/whitespaces - Exercise 9: Matching Whitespaces
+Match	1.   abc
+Match	2.	abc
+Match	3.           abc
+Skip	4.abc
+
+\d\.\s+abc - solution for Exercise 9: Matching Whitespaces
+
+
 Приоритет:
 группировка ()
 кватификаторы *+?
@@ -113,8 +122,7 @@ Exercise 1½: Matching Digits
 abc123xyz
 define "123"
 var g = 123;
-
-\D{0,}123\D{0,} - solution for Exercise 1½: Matching Digits
+Solution: \D{0,}123\D{0,}
 
 Exercise 5: Matching Character Ranges
 Match	Ana
@@ -123,8 +131,7 @@ Match	Cpc
 Skip	aax
 Skip	bby
 Skip	ccz
-
-[A-C][a-z]{1,2} - solution for Exercise 5: Matching Character Ranges
+Solution: [A-C][a-z]{1,2}
 
 Экранирование \
 Для [ ] / \ ^ $ . | ? * + ( ) { }
@@ -140,6 +147,29 @@ $ Конец строки/текста
 Anchors:
 \b(П|п)(и|и́)в[а-яё]{1,3}\b
 \b[а-яё]{1,9}алкоголь[а-яё]{1,9}\b - якорь в морфологии
+
+https://regexone.com/lesson/line_beginning_end - Exercise 10: Matching Lines
+Match	Mission: successful
+Skip	Last Mission: unsuccessful
+Skip	Next Mission: successful upon capture of target
+Solution: ^(Mission: successful)$
+
+ ^(IMG\d+\.png)$ - to list all the image files
+ ^(IMG\d+)\.png$ - to capture the filename without the extension
+ 
+https://regexone.com/lesson/capturing_groups - Exercise 11: Matching Groups
+Capture	file_record_transcript.pdf	-> file_record_transcript
+Capture	file_07241999.pdf	-> file_07241999
+Skip	testfile_fake.pdf.tmp
+Solution: ^(file\w+)\.pdf$
+
+https://regexone.com/lesson/nested_groups - Exercise 12: Matching Nested Groups
+Capturing the filenames of all the image files you have in a list. If each of these image files had a sequential picture number in the filename, you could extract both the filename and the picture number using the same pattern by writing an expression like ^(IMG(\d+))\.png$ (using a nested parenthesis to capture the digits).
+The nested groups are read from left to right in the pattern, with the first capture group being the contents of the first parentheses group, etc.
+Capture	Jan 1987	Jan 1987 1987
+Capture	May 1969	May 1969 1969
+Capture	Aug 2011
+Solution: ^([A-Za-z]{3}\s(\d{4}))$
 
 Modificators:
 (?i:patter)n PatteRn, !=patterN
@@ -164,6 +194,20 @@ The OR symbol:
 
 Grouping:
 (\bdef[ a-zA-Z]{1,}|val[ a-zA-Z]{1,}\b) - ?Напишите регулярные выражения для рефакторинга кода. К названиям функций надо добавить окончание _f, к названиям переменных _v
+
+https://regexone.com/lesson/more_groups - Exercise 13: Matching Nested Groups
+If I knew that a phone number may or may not contain an area code, the right pattern would test for the existence of the whole group of digits (\d{3})? and not the individual characters themselves (which would be wrong).
+Capture	1280x720	-> 1280 720
+Capture	1920x1600	-> 1920 1600
+Capture	1024x768
+Solution: (\d{3,4})x(\d{3,4})
+
+https://regexone.com/lesson/conditionals - Exercise 14: Matching Conditional Text
+Match	I love cats
+Match	I love dogs
+Skip	I love logs
+Skip	I love cogs
+Solution: .*(cats|dogs)
 
 Утверждения:
 (?=шаблон) просмотр вперед
