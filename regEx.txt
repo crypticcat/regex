@@ -1,1 +1,232 @@
-The OR symbol - вод(а|ы|е|у|ой|е)
+From https://regex101.com
+
+Экранирование символа \
+Символьные классы []
+Группировка ()
+Квантификаторы * ? + {m} {n,m}
+Конкатенация ab
+Чередование |
+
+Quantifiers:
+{n} - ровно n раз
+{n,m} - от n до m
+{m,} - не менее m
+{,m} - не более m
+* {0,} - 0 и более
+? {0,1} - 0 или 1
++ {1,} - 1 и более
+
+Quantifiers:
+(\+7|8)[0-9]{10} - номер телефона
+
+https://regexone.com/lesson/introduction_abcs - Exercise 1: Matching Characters
+abcdefg
+abcde
+abc
+
+abc[d-g]{0,} - solution for Exercise 1: Matching Characters
+
+https://regexone.com/lesson/wildcards_dot? - Exercise 2: Matching With Wildcards
+cat.	
+896.
+?=+.
+Skip	abc1
+
+.{0,3}\. - Exercise 2: Matching With Wildcards
+
+https://regexone.com/lesson/repeating_characters - Exercise 6: Matching Repeated Characters
+Match	wazzzzzup
+Match	wazzzup
+Skip	wazup
+
+waz{3,}up - solution for Exercise 6: Matching Repeated Characters
+
+https://regexone.com/lesson/kleene_operators - Exercise 7: Matching Repeated Characters
+Match	aaaabcc
+Match	aabbbbc
+Match	aacc
+Skip	a
+
+a+b*c+ - solution for Exercise 7: Matching Repeated Characters
+
+https://regexone.com/lesson/optional_characters - Exercise 8: Matching Optional Characters
+Match	1 file found?
+Match	2 files found?
+Match	24 files found?
+Skip	No files found.
+
+.*files* found\? - solution for Exercise 8: Matching Optional Characters
+
+https://regexone.com/lesson/whitespaces - Exercise 9: Matching Whitespaces
+Match	1.   abc
+Match	2.	abc
+Match	3.           abc
+Skip	4.abc
+
+\d\.\s+abc - solution for Exercise 9: Matching Whitespaces
+
+
+Приоритет:
+группировка ()
+кватификаторы *+?
+конкатенация ab
+чередование |
+
+самая длинная последовательность:
+аб+ жадный - аб, абб, аббб
+(аб+)б жадный - абб, аббб
+самая короткая последовательность:
+аб+? ленивый - аб, аб., аб..
+(аб+?)б ленивый - абб, абб.
+самая длинная, без "отката" при разборе:
+аб++ ревнивый - аб, абб, аббб
+аб++б ревнивый 
+
+Symbol classes:
+[abc]+ addfacccb -> a...acccb
+[a-zA-Z0-9]+ The Hateful Eight 000 -> The.Hateful.Eight.000
+[^0-9]+ 1 ab 2 cd -> . ab. cd
+[a-z&&[^wtf]]+ www leningrad spb ru -> ....leningrad.spb.ru
+
+https://regexone.com/lesson/matching_characters - Exercise 3: Matching Characters
+Match	can
+Match	man
+Match	fan
+Skip	dan
+Skip	ran
+Skip	pan
+
+[cmf]an - solution for Exercise 3: Matching Characters
+
+https://regexone.com/lesson/excluding_characters - Exercise 4: Excluding Characters
+Match	hog
+Match	dog
+Skip	bog
+[^b]og - Exercise 4: Excluding Characters
+
+\d [0-9] - цифровой символ
+\D [^0-9] - нецифровой символ
+\s [ \f\n\r\t\v] - пробельный символ
+\S [^ \f\n\r\t\v] - непробельный символ
+\w [a-zA-Z0-9_] - буква лат., цифра, _
+\W [^a-zA-Z0-9_] - кроме предыдущего
+   [а-яА-ЯЁё] - Буква кириллицы
+. - любой символ
+
+Symbol classes:
+\d{1,10}[\.,]{0,2}\d{0,10} - для поиска всех чисел в тексте (целых и с десятичными дробями)
+\d{1,10}(\.|,)\d{1,10} - для поиска чисел с десятичными дробями
+
+From https://regexone.com/lesson/letters_and_digits?
+Exercise 1½: Matching Digits
+abc123xyz
+define "123"
+var g = 123;
+Solution: \D{0,}123\D{0,}
+
+Exercise 5: Matching Character Ranges
+Match	Ana
+Match	Bob
+Match	Cpc
+Skip	aax
+Skip	bby
+Skip	ccz
+Solution: [A-C][a-z]{1,2}
+
+Экранирование \
+Для [ ] / \ ^ $ . | ? * + ( ) { }
+
+Anchors:
+^ Начало строки/текста
+\A Начало текста
+$ Конец строки/текста
+\Z Конец текста
+\b Граница слова
+\B Не граница слова
+
+Most useful in capturing entire words: \w+\b)
+
+Anchors:
+\b(П|п)(и|и́)в[а-яё]{1,3}\b
+\b[а-яё]{1,9}алкоголь[а-яё]{1,9}\b - якорь в морфологии
+
+https://regexone.com/lesson/line_beginning_end - Exercise 10: Matching Lines
+Match	Mission: successful
+Skip	Last Mission: unsuccessful
+Skip	Next Mission: successful upon capture of target
+Solution: ^(Mission: successful)$
+
+ ^(IMG\d+\.png)$ - to list all the image files
+ ^(IMG\d+)\.png$ - to capture the filename without the extension
+ 
+https://regexone.com/lesson/capturing_groups - Exercise 11: Matching Groups
+Capture	file_record_transcript.pdf	-> file_record_transcript
+Capture	file_07241999.pdf	-> file_07241999
+Skip	testfile_fake.pdf.tmp
+Solution: ^(file\w+)\.pdf$
+
+https://regexone.com/lesson/nested_groups - Exercise 12: Matching Nested Groups
+Capturing the filenames of all the image files you have in a list. If each of these image files had a sequential picture number in the filename, you could extract both the filename and the picture number using the same pattern by writing an expression like ^(IMG(\d+))\.png$ (using a nested parenthesis to capture the digits).
+The nested groups are read from left to right in the pattern, with the first capture group being the contents of the first parentheses group, etc.
+Capture	Jan 1987	Jan 1987 1987
+Capture	May 1969	May 1969 1969
+Capture	Aug 2011
+Solution: ^([A-Za-z]{3}\s(\d{4}))$
+
+Exercise 15: Matching Other Special Characters
+Task	Text	 
+Match	The quick brown fox jumps over the lazy dog.	To be completed
+Match	There were 614 instances of students getting 90.0% or above.	To be completed
+Match	The FCC had to censor the network for saying &$#*@!.
+
+
+
+Modificators:
+(?i:patter)n PatteRn, !=patterN
+(?i)pattern pattern, PATTERN
+(?-i)pattern pattern, !=PATTERN
+(?s) точка соотв. символам переноса
+(?i) игнорировать регистр символа
+(?m) работают с переносом строки
+(?x) игнор пробелы и вкл. комментариев
+(?i-sm:^pattern.)
+
+Grouping:
+(a+)b ab,aaab
+(ту|та)-\1 та-таб ту-туб та-ту
+(?:ab) группа без обратной связи
+a(?>bc|b|x)cc abccaxcc -> ....axcc
+
+Examples:
+The OR symbol:
+вод(а|ы|е|у|ой|е) - регулярное выражение для всех форм слова (ед. мн.ч)
+(19[0-9][0-9]|20[0-9][0-9]) - все места в тексте, где встречается численное написание года (20 и 21 век)
+
+Grouping:
+(\bdef[ a-zA-Z]{1,}|val[ a-zA-Z]{1,}\b) - ?Напишите регулярные выражения для рефакторинга кода. К названиям функций надо добавить окончание _f, к названиям переменных _v
+
+https://regexone.com/lesson/more_groups - Exercise 13: Matching Nested Groups
+If I knew that a phone number may or may not contain an area code, the right pattern would test for the existence of the whole group of digits (\d{3})? and not the individual characters themselves (which would be wrong).
+Capture	1280x720	-> 1280 720
+Capture	1920x1600	-> 1920 1600
+Capture	1024x768
+Solution: (\d{3,4})x(\d{3,4})
+
+https://regexone.com/lesson/conditionals - Exercise 14: Matching Conditional Text
+Match	I love cats
+Match	I love dogs
+Skip	I love logs
+Skip	I love cogs
+Solution: .*(cats|dogs)
+
+Утверждения:
+(?=шаблон) просмотр вперед
+(?!шаблон) отрицательный просмотр назад
+(?<=шаблон) просмотр назад
+(?<!шаблон) отрицательный просмотр назад
+
+Modifiers:
+- Найти строки (целиком) начинающиеся с двух согласных букв подряд. Использовать заглавные буквы в РЯ запрещено
+
+Утверждения:
+- автозамена в SQL
