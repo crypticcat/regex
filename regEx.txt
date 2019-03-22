@@ -185,12 +185,23 @@ Capture	Aug 2011
 Solution: ^([A-Za-z]{3}\s(\d{4}))$
 
 Exercise 15: Matching Other Special Characters
-Task	Text	 
-Match	The quick brown fox jumps over the lazy dog.	To be completed
-Match	There were 614 instances of students getting 90.0% or above.	To be completed
+Match	The quick brown fox jumps over the lazy dog.
+Match	There were 614 instances of students getting 90.0% or above.
 Match	The FCC had to censor the network for saying &$#*@!.
 
+You have a test string S. 
+Your task is to write a regex that will match S using the following conditions:
+S must be of length equal to 45.
+The first 40 characters should consist of letters(both lowercase and uppercase), or of even digits.
+The last 5 characters should consist of odd digits or whitespace characters.
+^[a-zA-Z02468]{40}[13579\s]{5}$
 
+You have a test string S. 
+Your task is to write a regex that will match S using the following conditions:
+S should begin with 1 or 2 digits.
+After that, S should have 3 or more letters (both lowercase and uppercase).
+Then S should end with up to 3 . symbol(s). You can end with 0 to 3 . symbol(s), inclusively.
+^(\d{1,2}[a-zA-Z]{3,}\.{0,3})$
 
 Modificators:
 (?i:patter)n PatteRn, !=patterN
