@@ -1,5 +1,4 @@
-From https://regex101.com
-
+From https://regex101.com:
 Экранирование символа \
 Символьные классы []
 Группировка ()
@@ -16,7 +15,7 @@ Quantifiers:
 ? {0,1} - 0 или 1
 + {1,} - 1 и более
 
-Quantifiers:
+Examples:
 (\+7|8)[0-9]{10} - номер телефона
 
 https://regexone.com/lesson/introduction_abcs - Exercise 1: Matching Characters
@@ -31,14 +30,12 @@ cat.
 896.
 ?=+.
 Skip	abc1
-
 .{0,3}\. - Exercise 2: Matching With Wildcards
 
 https://regexone.com/lesson/repeating_characters - Exercise 6: Matching Repeated Characters
 Match	wazzzzzup
 Match	wazzzup
 Skip	wazup
-
 waz{3,}up - solution for Exercise 6: Matching Repeated Characters
 
 https://regexone.com/lesson/kleene_operators - Exercise 7: Matching Repeated Characters
@@ -46,7 +43,6 @@ Match	aaaabcc
 Match	aabbbbc
 Match	aacc
 Skip	a
-
 a+b*c+ - solution for Exercise 7: Matching Repeated Characters
 
 https://regexone.com/lesson/optional_characters - Exercise 8: Matching Optional Characters
@@ -54,7 +50,6 @@ Match	1 file found?
 Match	2 files found?
 Match	24 files found?
 Skip	No files found.
-
 .*files* found\? - solution for Exercise 8: Matching Optional Characters
 
 https://regexone.com/lesson/whitespaces - Exercise 9: Matching Whitespaces
@@ -62,9 +57,7 @@ Match	1.   abc
 Match	2.	abc
 Match	3.           abc
 Skip	4.abc
-
 \d\.\s+abc - solution for Exercise 9: Matching Whitespaces
-
 
 Приоритет:
 группировка ()
@@ -95,7 +88,6 @@ Match	fan
 Skip	dan
 Skip	ran
 Skip	pan
-
 [cmf]an - solution for Exercise 3: Matching Characters
 
 https://regexone.com/lesson/excluding_characters - Exercise 4: Excluding Characters
@@ -133,9 +125,8 @@ Skip	bby
 Skip	ccz
 Solution: [A-C][a-z]{1,2}
 
-You have a test string . 
-Your task is to write a regex that will match  with the following conditions:
- must be of length 6.
+Your task is to write a regex for string S that will match  with the following conditions:
+S must be of length 6.
 First character should not be a digit.
 Second character should not be a lowercase vowel.
 Third character should not be b, c, D or F.
@@ -189,19 +180,27 @@ Match	The quick brown fox jumps over the lazy dog.
 Match	There were 614 instances of students getting 90.0% or above.
 Match	The FCC had to censor the network for saying &$#*@!.
 
-You have a test string S. 
-Your task is to write a regex that will match S using the following conditions:
+Your task is to write a regex that will match string S using the following conditions:
 S must be of length equal to 45.
 The first 40 characters should consist of letters(both lowercase and uppercase), or of even digits.
 The last 5 characters should consist of odd digits or whitespace characters.
 ^[a-zA-Z02468]{40}[13579\s]{5}$
 
-You have a test string S. 
-Your task is to write a regex that will match S using the following conditions:
+Your task is to write a regex that will match string S using the following conditions:
 S should begin with 1 or 2 digits.
 After that, S should have 3 or more letters (both lowercase and uppercase).
 Then S should end with up to 3 . symbol(s). You can end with 0 to 3 . symbol(s), inclusively.
 ^(\d{1,2}[a-zA-Z]{3,}\.{0,3})$
+
+Your task is to write a regex for String S which will match word starting with vowel (a,e,i,o, u, A, E, I , O or U). 
+The matched word can be of any length. The matched word should consist of letters (lowercase and uppercase both) only. 
+The matched word must start and end with a word boundary.
+\b[aeiouAEIOU][a-zA-Z]*\b
+
+Given a test string, S, write a RegEx that matches  under the following conditions:
+ must start with Mr., Mrs., Ms., Dr. or Er..
+The rest of the string must contain only one or more English alphabetic letters (upper and lowercase).
+^(Mr\.|Mrs\.|Ms\.|Dr\.|Er\.)[a-zA-Z]+$
 
 Modificators:
 (?i:patter)n PatteRn, !=patterN
@@ -216,10 +215,10 @@ Modificators:
 Grouping:
 (a+)b ab,aaab
 (ту|та)-\1 та-таб ту-туб та-ту
-(?:ab) группа без обратной связи
+(?:ab) группа без обратной связи = 
+(?: ) can be used to create a non-capturing group. It is useful if we do not need the group to capture its match.
 a(?>bc|b|x)cc abccaxcc -> ....axcc
 
-Examples:
 The OR symbol:
 вод(а|ы|е|у|ой|е) - регулярное выражение для всех форм слова (ед. мн.ч)
 (19[0-9][0-9]|20[0-9][0-9]) - все места в тексте, где встречается численное написание года (20 и 21 век)
@@ -240,6 +239,24 @@ Match	I love dogs
 Skip	I love logs
 Skip	I love cogs
 Solution: .*(cats|dogs)
+
+String S should have 3 or more consecutive repetitions of ok:
+.*(ok){3,}.*
+
+Your task is to write a regex that will match string S with the following conditions:
+S must be of length: 20
+1st character: lowercase letter; 2nd character: word character;
+3d character: whitespace character; 4th character: non word character;
+5th character: digit; 6th character: non digit.
+7th character: uppercase letter; 8th character: letter (either lowercase or uppercase).
+9th character: vowel (a, e, i , o , u, A, E, I, O or U).
+10th character: non whitespace character.
+11th character: should be same as 1st character; 12th character: should be same as 2nd character.
+ 13th character: should be same as 3rd character; 14th character: should be same as 4th character.
+ 15th character: should be same as 5th character; 16th character: should be same as 6th character.
+ 17th character: should be same as 7th character; 18th character: should be same as 8th character.
+19th character: should be same as 9th character; 20th character: should be same as 10th character.
+^([a-z])(\w)(\s)(\W)(\d)(\D)([A-Z])([a-zA-Z])([aeiouAEIOU])(\S)\1\2\3\4\5\6\7\8\9\10$
 
 Утверждения:
 (?=шаблон) просмотр вперед
