@@ -258,6 +258,17 @@ S must be of length: 20
 19th character: should be same as 9th character; 20th character: should be same as 10th character.
 ^([a-z])(\w)(\s)(\W)(\d)(\D)([A-Z])([a-zA-Z])([aeiouAEIOU])(\S)\1\2\3\4\5\6\7\8\9\10$
 
+Backreference to a capturing group that match nothing is different from backreference to a capturing group that did not participate in the match at all.
+(b?)o\1
+Here, b? is optional and matches nothing. 
+Thus, (b?) is successfully matched and capture nothing. 
+o is matched with o and \1 successfully matches the nothing captured by the group.
+(b)?o\1
+In most regex flavors (excluding JavaScript), (b)?o\1 fails to match o. 
+Here, (b) fails to match at all. Since, the whole group is optional the regex engine does proceed to match o. 
+The regex engine now arrives at \1 which references a group that did not participate in the match attempt at all. 
+Thus, the backreference fails to match at all.
+
 Утверждения:
 (?=шаблон) просмотр вперед
 (?!шаблон) отрицательный просмотр назад
