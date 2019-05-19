@@ -279,6 +279,28 @@ Valid
 12-34-56-87
 ^\\d{2}(-?)\\d{2}\\1\\d{2}\\1\\d{2}$
 
+NOTE - Branch reset group is supported by Perl, PHP, Delphi and R.
+A branch reset group consists of alternations and capturing groups. (?|(regex1)|(regex2)) 
+Alternatives in branch reset group share same capturing group.
+You have a test string . 
+Your task is to write a regex which will match , with following condition(s):
+S consists of 8 digits.
+ must have "---", "-", "." or ":" separator such that string  gets divided in  parts, with each part having exactly two digits.
+ string must have exactly one kind of separator.
+Separators must have integers on both sides.
+^\d{2}(?|(---)|(-)|(\.)|(:))\d{2}\1\d{2}\1\d{2}$
+
+NOTE - Forward reference is supported by JGsoft, .NET, Java, Perl, PCRE, PHP, Delphi and Ruby regex flavors.
+Forward reference creates a back reference to a regex that would appear later. 
+Forward references are only useful if they're inside a repeated group. 
+Then there may arise a case in which the regex engine evaluates the backreference after the group has been matched already.
+You have a test string . 
+Your task is to write a regex which will match , with following condition(s):
+S consists of tic or tac.
+tic should not be immediate neighbour of itself.
+The first tic must occur only when tac has appeared at least twice before.
+
+
 Утверждения:
 (?=шаблон) просмотр вперед
 (?!шаблон) отрицательный просмотр назад
